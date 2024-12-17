@@ -34,15 +34,66 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+Step1: Define the specifications and initialize the design.
+Step2: Declare the name of the entity and architecture by using VHDL source code.
+Step3: Write the source code in VERILOG.
+Step4: Check the syntax and debug the errors if found, obtain the synthesis report.
+Step5: Verify the output by simulating the source code.
+Step6: Write all possible combinations of input using the test bench.
+Step7: Obtain the place and route report.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+
+```
+module srflipflops(s, r, clk, rst, q, qbar);
+ input s;
+ input r;
+ input clk;
+ input rst;
+ output q;
+ output qbar;
+		  reg q,qbar;	
+		  always @ (posedge(clk) or posedge(rst)) begin
+		  if(rst==1'b1) begin
+        q= 1'b0;qbar= 1'b1;
+		  end
+		  else if(s==1'b0 && r==1'b0)
+		   begin
+		  q=q; qbar=qbar;
+		  end
+                else if(s==1'b0 && r==1'b1)
+                 begin
+        q= 1'b0; qbar= 1'b1;
+        end
+                else if(s==1'b1 && r==1'b0)
+                 begin
+        q= 1'b1; qbar= 1'b0;
+        end
+        else
+        begin
+        q=1'bx;qbar=1'bx;
+        end
+        end
+endmodule
+
+```
+
+Developed by: NANDA KISHOR SP 
+RegisterNumber: 24011485
 */
 
 **RTL LOGIC FOR FLIPFLOPS**
 
+![Screenshot (100)](https://github.com/user-attachments/assets/702d1f87-297d-44c3-a71f-5d16ae3f6745)
+
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+![Screenshot (101)](https://github.com/user-attachments/assets/07d2f5e5-0219-4dcd-8161-a1d112f8717b)
+
+
 **RESULTS**
+
+The SR flip-flop was implemented successfully using Verilog, and its functionality was validated through simulation. The output matches the expected functional table of the SR flip-flop.
